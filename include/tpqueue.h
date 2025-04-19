@@ -14,7 +14,7 @@ class TPQueue {
     struct Node {
         T data;
         Node* next;
-        Node(T val) : data(val), next(nullptr) {}
+        explicit Node(T val) : data(val), next(nullptr) {}
     };
     Node* head;
 
@@ -28,7 +28,7 @@ class TPQueue {
         }
     }
 
-    void push(T item) {  // Изменено на push
+    void push(T item) {
         Node* newNode = new Node(item);
         if (!head || head->data.prior < item.prior) {
             newNode->next = head;
