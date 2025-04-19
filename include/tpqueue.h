@@ -10,7 +10,7 @@ struct SYM {
 };
 template<typename T>
 class TPQueue {
-private:
+ private:
     struct Node {
         T data;
         Node* next;
@@ -18,9 +18,8 @@ private:
     };
     Node* head;
 
-public:
+ public:
     TPQueue() : head(nullptr) {}
-
     ~TPQueue() {
         while (head != nullptr) {
             Node* temp = head;
@@ -28,7 +27,8 @@ public:
             delete temp;
         }
     }
-    void enqueue(T item) {
+
+    void push(T item) {  // Изменено на push
         Node* newNode = new Node(item);
         if (!head || head->data.prior < item.prior) {
             newNode->next = head;
@@ -43,7 +43,7 @@ public:
         }
     }
 
-    T dequeue() {
+    T pop() {
         if (!head) {
             throw std::runtime_error("Queue is empty");
         }
@@ -53,6 +53,7 @@ public:
         delete temp;
         return item;
     }
+
     bool isEmpty() const {
         return head == nullptr;
     }
